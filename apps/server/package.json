@@ -1,0 +1,10 @@
+{
+    "name": "server",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "python -m uvicorn app.main:app --reload",
+        "start": "python -m uvicorn app.main:app",
+        "setup": "python -m venv venv && .\\venv\\Scripts\\python -m pip install -r requirements.txt"
+    }
+}
