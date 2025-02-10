@@ -5,6 +5,8 @@
     "scripts": {
         "dev": "python -m uvicorn app.main:app --reload",
         "start": "python -m uvicorn app.main:app",
-        "setup": "python -m venv venv && .\\venv\\Scripts\\python -m pip install -r requirements.txt"
+        "setup:windows": "python -m venv venv && .\\venv\\Scripts\\python -m pip install -r requirements.txt",
+        "setup:unix": "python -m venv venv && ./venv/bin/python -m pip install -r requirements.txt",
+        "setup": "node -e \"process.platform === 'win32' ? process.exit(1) : process.exit(0)\" && pnpm run setup:unix || pnpm run setup:windows"
     }
 }
