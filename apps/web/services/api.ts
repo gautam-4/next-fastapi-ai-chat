@@ -22,9 +22,18 @@ type DocumentType =
     | 'txt' 
     | 'csv' 
     | 'json' 
+    | 'image'
     | 'unknown';
 
 const SUPPORTED_DOCUMENT_TYPES: SupportedMimeTypes = {
+    // Image formats
+    'image/jpeg': 'image',
+    'image/png': 'image',
+    'image/gif': 'image',
+    'image/webp': 'image',
+    'image/svg+xml': 'image',
+    'image/bmp': 'image',
+    'image/tiff': 'image',
     // PDF files
     'application/pdf': 'pdf',
     
@@ -83,6 +92,9 @@ interface FileAnalysis {
     rows?: number;
     columns?: number;
     structure?: string;
+    detected_format?: string;
+    width?: number;
+    height?: number;
 }
 
 interface APIResponse {
@@ -108,6 +120,15 @@ const getFileType = (file: File): DocumentType => {
     
     // Fallback to extension checking for some common cases
     const extensionToType: { [key: string]: DocumentType } = {
+        // Image formats
+        'jpg': 'image',
+        'jpeg': 'image',
+        'png': 'image',
+        'gif': 'image',
+        'webp': 'image',
+        'svg': 'image',
+        'bmp': 'image',
+        'tiff': 'image',
         'pdf': 'pdf',
         'doc': 'doc',
         'docx': 'docx',
@@ -164,6 +185,9 @@ const formatFileAnalysis = (analysis: FileAnalysis): string => {
         
         case 'json':
             return `Processed ${filename} (${analysis.structure})`;
+            
+        case 'image':
+            return `Processed ${filename} (${analysis.detected_format}, ${analysis.width}x${analysis.height})`;
         
         default:
             return `Processed ${filename}`;
