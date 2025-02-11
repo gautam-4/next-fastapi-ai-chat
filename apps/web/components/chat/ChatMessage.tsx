@@ -12,7 +12,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
                 className={`max-w-[80%] rounded-lg px-4 py-2 ${
                     message.role === "user"
                         ? "bg-gray-800 text-white"
-                        : "bg-gray-100 dark:bg-gray-700"
+                        : "bg-gray-100"
                 }`}
             >
                 {message.content}

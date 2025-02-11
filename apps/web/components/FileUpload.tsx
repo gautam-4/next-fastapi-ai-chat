@@ -40,12 +40,12 @@ export default function FileUpload({ files, onFilesChange }: FileUploadProps) {
       />
       
       {files.length > 0 && (
-        <ScrollArea className="w-full border rounded-lg mb-4 bg-gray-50 dark:bg-gray-800">
+        <ScrollArea className="w-full border rounded-lg mb-4 bg-gray-50">
           <div className="p-2 space-y-2">
             {files.map((file, index) => (
               <div
                 key={`${file.name}-${index}`}
-                className="flex items-center justify-between bg-white dark:bg-gray-700 rounded-md p-2 shadow-sm"
+                className="flex items-center justify-between bg-white rounded-md p-2 shadow-sm"
               >
                 <div className="flex items-center space-x-2 truncate">
                   <File className="w-4 h-4 text-blue-500" />
@@ -71,7 +71,7 @@ export default function FileUpload({ files, onFilesChange }: FileUploadProps) {
       <Button
         variant="outline"
         size="sm"
-        className="w-full bg-gray-50 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700"
+        className="w-full bg-gray-50 hover:bg-gray-100"
         onClick={handleUploadClick}
       >
         <Upload className="w-4 h-4 mr-2" />
