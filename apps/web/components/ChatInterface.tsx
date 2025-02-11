@@ -21,7 +21,7 @@ export default function ChatInterface() {
         <div className="flex flex-col w-full h-full">
             <ChatHeader />
             <MessageList messages={messages} isLoading={isLoading} />
-            <div className="border-t bg-white dark:bg-gray-800 p-4">
+            <div className="border-t bg-white dark:bg-gray-950 p-4">
                 <div className="max-w-3xl mx-auto space-y-4">
                     <FileUpload 
                         files={selectedFiles} 
